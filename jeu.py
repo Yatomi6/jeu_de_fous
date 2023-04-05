@@ -1,4 +1,4 @@
-# Fichier Game.py est le plus important.
+# Fichier jeu.py est le plus important.
 # Il relit tous les fichiers entre eux et leurs coabitations.
 
 # Importation
@@ -43,15 +43,15 @@ class Jeu():
     
     # Logo
         # Création du rectangle du logo
-        logo_x = (application.get_width() - pm.bouton_largeur) // 2 - 5
-        logo_y = (application.get_height() - pm.bouton_hauteur) // 2 - 270
+        logo_x = (application.get_width() - pm.bouton_largeur) // 2
+        logo_y = (application.get_height() - pm.bouton_hauteur) // 2 - 400
         self.logo_rect = pygame.Rect(logo_x, logo_y, 500, 250)
 
         # Charger du logo depuis le fichier
         logo = pygame.image.load("image\Logo_jeu_2-removebg-preview.png")#.convert_alpha()
 
         # Définir la nouvelle taille souhaitée
-        new_width = 250
+        new_width = 300
 
         # Calculer la nouvelle hauteur en maintenant le ratio d'aspect
         ratio_logo = logo.get_width() / logo.get_height()
@@ -64,37 +64,44 @@ class Jeu():
         application.blit(logo, self.logo_rect)
 
     # Bouton Jeu
+        # Charger l'image du bouton
+        image_jouer = pygame.image.load("image\Bouton_Jouer_final.png")
+
         # Créer un bouton 1
-        button_x = (application.get_width() - pm.bouton_largeur) // 2
+        button_x = (application.get_width() - pm.bouton_largeur) // 2 + 50
         button_y = (application.get_height() - pm.bouton_hauteur) // 2
         button_color = pm.blanc
-        self.button_rect = pygame.Rect(button_x, button_y, pm.bouton_largeur, pm.bouton_hauteur)
+        self.button_rect = pygame.Rect(button_x, button_y, image_jouer.get_width(), image_jouer.get_height())
+
+        # Afficher le bouton
+        application.blit(image_jouer, (button_x,button_y))
 
         # Générer une surface de texte
-        text_surface_bouton_1 = pm.police.render("Jouer", True, pm.vert)
+        #text_surface_bouton_1 = pm.police.render("Jouer", True, pm.vert)
 
         # Dessiner le bouton
-        pygame.draw.rect(application, button_color, self.button_rect)
+        #pygame.draw.rect(application, button_color, self.button_rect, border_radius= pm.arrondi_angle)
     
         # Dessiner le texte sur le bouton (à enlever quand Flo -> logo)
-        text_rect_bouton_1 = text_surface_bouton_1.get_rect(center=self.button_rect.center)
-        application.blit(text_surface_bouton_1, text_rect_bouton_1)
+        #text_rect_bouton_1 = text_surface_bouton_1.get_rect(center=self.button_rect.center)
+        #application.blit(text_surface_bouton_1, text_rect_bouton_1)
 
         # Petit test du son
-        self.sound = pygame.mixer.Sound("son\VOXLaff_Rire.ogg")
+        #self.sound = pygame.mixer.Sound("son\VOXLaff_Rire.ogg")
 
     # Bouton Quitter
         # Créer un bouton 2
         button_x_2 = (application.get_width() - pm.bouton_largeur) // 2
         button_y_2 = (application.get_height() - pm.bouton_hauteur) // 2 + 70
-        button_color_2 = pm.bleu
+        button_color_2 = pm.couleur_test
         self.button_rect_2 = pygame.Rect(button_x_2, button_y_2, pm.bouton_largeur, pm.bouton_hauteur)
 
         # Générer une surface de texte
         text_surface = pm.police.render("Quitter", True, pm.blanc)
 
         # Dessiner le bouton
-        pygame.draw.rect(application, button_color_2, self.button_rect_2)
+        pygame.draw.rect(application, button_color_2, self.button_rect_2, border_radius= pm.arrondi_angle)
+        pygame.draw.rect(application, pm.couleur_test_2, self.button_rect_2.inflate(-10, -10), border_radius = pm.arrondi_angle)
 
         # Dessiner le texte sur le bouton
         text_rect = text_surface.get_rect(center=self.button_rect_2.center)
@@ -119,7 +126,7 @@ class Jeu():
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if self.button_rect.collidepoint(event.pos):
                         print("Jouer !!!")
-                        self.sound.play()
+                        #self.sound.play()
                     if self.button_rect_2.collidepoint(event.pos):
                         pygame.quit()
                         quit()
