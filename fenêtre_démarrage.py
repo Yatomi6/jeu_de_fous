@@ -101,7 +101,7 @@ class Fen_demarrage():
         text_rect = text_surface.get_rect(center=self.button_rect_2.center)
         application.blit(text_surface, text_rect)
 
-        self.update()
+        #self.update()
 
     def update(self):
         # Mettre à jour l'affichage

@@ -23,6 +23,7 @@ class Jeu():
         self.fenetre_demarrage.sound_nom_du_jeu.play()
         # Boucle de jeu
         while True:
+            self.update()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -31,9 +32,7 @@ class Jeu():
                 # Vérifier si les boutons sont cliqués
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if self.fenetre_demarrage.button_rect.collidepoint(event.pos):
-                        print("Jouer !!!")
                         self.fen_sauvegarde()
-                        #self.sound.play()
                     if self.fenetre_demarrage.button_rect_2.collidepoint(event.pos):
                         pygame.quit()
                         quit()
