@@ -1,11 +1,11 @@
 # Fichier jeu.py est le plus important.
-# Il relit tous les fichiers entre eux et leurs coabitations.
+# Il relit tous les fichiers entre eux et leurs cohabitations.
 
 # Importation
 import pygame
 import fenêtre_démarrage as f_dem
 import fenêtre_sauvegarde as f_sau
-import paramètre as pm
+import paramètres as pm
 
 # 
 class Jeu():
@@ -36,3 +36,6 @@ class Jeu():
                     if self.fenetre_demarrage.button_rect_2.collidepoint(event.pos):
                         pygame.quit()
                         quit()
+                    if self.fenetre_demarrage.button_rect_3.collidepoint(event.pos):
+                        print("Faire une fenetre de paramètres mais jsp comment faire")
+                        self.fen_sauvegarde()

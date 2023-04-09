@@ -1,5 +1,5 @@
 import pygame
-import paramètre as pm
+import paramètres as pm
 
 class Fen_sauvegarde():
     def __init__(self):

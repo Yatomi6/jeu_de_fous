@@ -1,5 +1,5 @@
 import pygame
-import paramètre as pm
+import paramètres as pm
 
 class Fen_demarrage():
     def __init__(self):
@@ -101,7 +101,20 @@ class Fen_demarrage():
         text_rect = text_surface.get_rect(center=self.button_rect_2.center)
         application.blit(text_surface, text_rect)
 
-        #self.update()
+    # Bouton Paramètres
+        # Charger l'image du bouton
+        image_paramètres = pygame.image.load("image\Bouton_Paramètres.png")
+
+        # Créer un bouton 3
+        button_x_3 = (application.get_width() - 203) # 203 est la largeur de l'image
+        button_y_3 = 0
+        button_color_3 = pm.blanc
+        self.button_rect_3 = pygame.Rect(button_x_3, button_y_3, pm.bouton_largeur, pm.bouton_hauteur)
+
+        # Afficher le bouton
+        application.blit(image_paramètres, (button_x_3,button_y_3))
+
+        self.update()
 
     def update(self):
         # Mettre à jour l'affichage
